@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movetest : MonoBehaviour
+ 
 {
     public Vector3 MoveOffset;
+    public Vector3 SpeedOddset;
     // Start is called before the first frame update
     void Start()
     {
