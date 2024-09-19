@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 50c9507e81d19c34fa841737e24cfa3a
+  productGUID: bc720f17cbed7e949be7bc54230f1e8e
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -914,11 +914,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6299af03-493a-43b6-a490-c25dedd25adb
+  cloudProjectId: f3b43b34-faaf-4ac9-8de2-9ce1de4f116c
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: URPProject
-  organizationId: qkrtkfkd9074-naver-com
+  organizationId: csx256-naver-com
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
