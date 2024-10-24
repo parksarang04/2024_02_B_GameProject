@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
-//모든 아이템의 기본 인터페이스 interface 클래스
-//메소드, 이벤트, 인데서, 프로퍼티
-//모든것이 무조건 Puvlic으로 선언
-//구현부 x
-public interface IItem
+//모든 아이템의 기본 인터페이스 interface 클래스 
+//메소드,이벤트,인데서,프로퍼티 
+//모든이 무조건 Public으로 선언 된다. 
+//구현부가 없다. 
+public interface IItem 
 {
     string Name { get; }
     int ID { get; }
@@ -21,15 +20,15 @@ public class Weapon : IItem
     public int ID { get; private set; }
     public int Damage { get; private set; }
 
-    public Weapon(string name, int id, int damage)
+    public Weapon(string name, int id, int damage)  //생성자
     {
         Name = name;
-        ID = id;
+        ID = id;    
         Damage = damage;
     }
     public void Use()
     {
-        UnityEngine.Debug.Log($"Using weapon {Name} with damage {Damage}");
+        Debug.Log($"Using weapon {Name} with damage {Damage}");
     }
 }
 
@@ -38,21 +37,21 @@ public class HealthPotion : IItem
 {
     public string Name { get; private set; }
     public int ID { get; private set; }
-    public int HealthAmount { get; private set; }
+    public int HealAmount { get; private set; }
 
-    public HealthPotion(string name, int id, int healthAmount)
+    public HealthPotion(string name, int id, int healAmount)  //생성자
     {
         Name = name;
         ID = id;
-        HealthAmount = healthAmount;
+        HealAmount = healAmount;
     }
     public void Use()
     {
-        UnityEngine.Debug.Log($"Using weapon {Name} with damage {HealthAmount}");
+        Debug.Log($"Using weapon {Name} with damage {HealAmount}");
     }
 }
 
-//제네릭 인벤토리 클래스
+//제네릭 인벤토리 클래스 
 public class Inventory<T> where T : IItem
 {
     private List<T> items = new List<T>();
@@ -60,58 +59,59 @@ public class Inventory<T> where T : IItem
     public void AddItem(T item)
     {
         items.Add(item);
-        UnityEngine.Debug.Log($"Add{item.Name} to inventory");
+        Debug.Log($"Add {item.Name} to inventory");
     }
 
     public void UseItem(int index)
     {
-        if(index >= 0 && index < items.Count)
+        if (index >= 0 && index < items.Count)
         {
             items[index].Use();
         }
         else
         {
-            UnityEngine.Debug.Log("Invalid item index");
-
+            Debug.Log("Invalid item index");
         }
     }
-
     public void ListItems()
     {
         foreach(var item in items)
         {
-            UnityEngine.Debug.Log($"Item : {item.Name},ID : {item.ID}");
+            Debug.Log($"Item: {item.Name} , ID : {item.ID}");
         }
     }
 }
 
-//인벤토리 Manager
+//인벤토리 Manager 
 public class InventoryManager : MonoBehaviour
 {
     private Inventory<IItem> playerInventory;
+    public int UseBagIndex;
 
-    private void Start()
+    void Start()
     {
         playerInventory = new Inventory<IItem>();
 
+        //아이템 추가 
         playerInventory.AddItem(new Weapon("Sword", 1, 10));
         playerInventory.AddItem(new HealthPotion("Small Potion", 2, 20));
     }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            playerInventory.ListItems();        //인벤토리 내용 출력
+            playerInventory.ListItems();            //인텐토리 내용 출력
         }
+
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            playerInventory.UseItem(0);         //아이템 사용
+            playerInventory.UseItem(UseBagIndex);             //아이템 사용
         }
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            playerInventory.AddItem(new Weapon("Sword",1,10));      //아이템 생성
-        }   
+            playerInventory.AddItem(new Weapon("Sword", 1, 10));        //아이템 생성 
+        }
     }
-
-
 }

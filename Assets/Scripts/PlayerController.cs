@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public CommandManager CommandManager;
-  
+    public CommandManager CommandManager;   
     // Update is called once per frame
-    //키를 조작해서 플레이어 컨트롤을 할 수 있다.
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             ICommand moveRight = new MoveCommand(transform, Vector3.right);
             CommandManager.ExecuteCommand(moveRight);
@@ -20,10 +18,9 @@ public class PlayerController : MonoBehaviour
             ICommand moveLeft = new MoveCommand(transform, Vector3.left);
             CommandManager.ExecuteCommand(moveLeft);
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Z))
         {
             CommandManager.UndoLastCommand();
-        }
-        
+        }        
     }
 }

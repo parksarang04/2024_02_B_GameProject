@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class SimpleCallback : MonoBehaviour
 {
-    private Action greetingAction;      //액션 선언
-    // Start is called before the first frame update
+    private Action greetingAction;              //액션 선언 
+  
     void Start()
     {
-        greetingAction = SayHello;      //Action 함수 할당
+        greetingAction = SayHello;              //Action 함수 할당
         PerformGreeting(greetingAction);
     }
 
     void SayHello()
     {
-        Debug.Log("Hello, world");
+        Debug.Log("Hello, world!");
     }
-    // Update is called once per frame
+
     void PerformGreeting(Action greetingFunc)
     {
         greetingFunc?.Invoke();
-    }
+    }  
 }

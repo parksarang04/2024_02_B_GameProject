@@ -25,7 +25,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         get
         {
             //애플리케이션 종료 중 고스트 객체 생성 방지을 위한 체크 
-            if (isQuitting)
+            if(isQuitting)
             {
                 Debug.Log($"[싱글톤] '{typeof(T)}' 인스턴스가 애플리케이션 종료 중에 접근 되고 있습니다. 고스트 객체 방지를 위해 null 반환");
                 return null;
@@ -37,12 +37,12 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 //인스턴스가 없으면 찾거나 생성
                 if (instance == null)
                 {
-
+                    
                     //씬에서 기존 인스턴스 찾기
                     instance = (T)FindObjectOfType(typeof(T));
 
                     //인스턴스가 없으면 새로 생성 
-                    if (instance == null)
+                    if(instance == null)
                     {
                         GameObject singletonObject = new GameObject($"{typeof(T)}(Singleton)");
                         instance = singletonObject.AddComponent<T>();
@@ -86,7 +86,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     protected virtual void OnDestroy()
     {
         //객체가 파괴되고 있지만 애플리케이션이 종료 중이 아니라면 문제 이기 때문에 로그를 남김 
-        if (!isQuitting)
+        if(!isQuitting)
         {
             Debug.LogWarning($"[싱글톤] {typeof(T)}의 인스턴스가 애플리케이션 종료가 아닌 시점에서 파괴 , 문제가 됨");
         }
