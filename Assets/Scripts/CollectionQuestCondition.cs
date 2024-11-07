@@ -10,7 +10,7 @@ namespace MyGame.GuestSystem
         private int requiredAmount; //수집해야 할 아이템 개수
         private int currentAmount;  //현재까지 수집한 아이템 개수
 
-        public CollectionQuestCondition(string itemid, int requiredAmount, int currentAmount)   //생성자에서 아이템 ID와 필요한 개수를 설정
+        public CollectionQuestCondition(string itemid, int requiredAmount)   //생성자에서 아이템 ID와 필요한 개수를 설정
         {
             this.itemid = itemid;
             this.requiredAmount = requiredAmount;
@@ -25,7 +25,7 @@ namespace MyGame.GuestSystem
 
         public void ItemCollected(string itemid)
         {
-            if (this.itemid != itemid)
+            if (this.itemid == itemid)
             {
                 currentAmount++;
             }
