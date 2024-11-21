@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyGame.GuestSystem
+ namespace MyGame.GuestSystem
 {
     //아이템 품질 등급
 

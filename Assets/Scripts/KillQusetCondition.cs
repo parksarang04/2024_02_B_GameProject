@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MyGame.GuestSystem
 {
-    public class KillQuuestCondition : IQuestCondition
+    public class KillQuestCondition : IQuestCondition
     {
         //처치해야 할 적의 유형
         private string enemyType;
@@ -15,7 +15,7 @@ namespace MyGame.GuestSystem
         private int currentKills;
 
         //처치 퀘스트 조건 초기화 생성자
-        public KillQuuestCondition(string enemyType, int reqiredKills)
+        public KillQuestCondition(string enemyType, int reqiredKills)
         {
             this.enemyType = enemyType;
             this.reqiredKills = reqiredKills;
